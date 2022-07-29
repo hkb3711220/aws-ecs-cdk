@@ -12,7 +12,7 @@ class PipelineStack(Stack):
         common_name = "shanghaixiaochi"
         pipeline = pipelines.CodePipeline(self, 
             "{}-ecs-deploy".format(common_name), 
-            pipeline_name="{}-ecs-deploy".format(common_name),
+            pipeline_name="{}-cd-pipeline".format(common_name),
             synth=pipelines.ShellStep("Synth", 
                 input=pipelines.CodePipelineSource.git_hub(
                     "h3711220/aws_ecs_cdk", "main"),
