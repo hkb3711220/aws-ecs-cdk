@@ -14,7 +14,12 @@ class PipelineStack(Stack):
             "{}-ecs-deploy".format(common_name), 
             pipeline_name="{}-ecs-deploy".format(common_name),
             synth=pipelines.ShellStep("Synth", 
-                input=pipelines.CodePipelineSource.connection(
-                    "OWNER/REPO", "main"),
+                input=pipelines.CodePipelineSource.git_hub(
+                    "h3711220/aws_ecs_cdk", "main"),
+                commands=[
+                    "npm install -g aws-cdk", 
+                    "python -m pip install -r requirements.txt", 
+                    "cdk synth"
+                    ]
                 )
         )

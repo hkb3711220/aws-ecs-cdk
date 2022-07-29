@@ -3,11 +3,12 @@ import os
 
 import aws_cdk as cdk
 
-from shanghaixiaochi_ecs.shanghaixiaochi_ecs_stack import ShanghaixiaochiEcsStack
+from modules.ecs import EcsStack
+from modules.pipeline import PipelineStack
 
 
 app = cdk.App()
-ShanghaixiaochiEcsStack(app, "ShanghaixiaochiEcsStack",
+EcsStack(app, "ShanghaixiaochiEcsStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
