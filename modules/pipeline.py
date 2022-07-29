@@ -5,7 +5,7 @@ from aws_cdk import (
 )
 
 from constructs import Construct
-
+from modules.appstage import AppStage
 class PipelineStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -24,3 +24,4 @@ class PipelineStack(Stack):
                     ]
                 )
         )
+        pipeline.add_stage(AppStage(self, "{}-ecs-app-stage".format(common_name)))

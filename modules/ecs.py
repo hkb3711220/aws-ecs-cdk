@@ -18,7 +18,7 @@ class EcsStack(Stack):
         cluster = ecs.Cluster(self, "{}-cluster".format(common_name), vpc=vpc)
         repository = ecr.Repository.from_repository_arn(self, "{}-ecr".format(common_name), repository_arn=ecr_arn)
         ecs_patterns.ApplicationLoadBalancedFargateService(self,
-            "{}-farget-service".format(common_name),
+            "{}-fargate".format(common_name),
             cluster=cluster,
             cpu=1024,
             desired_count=1,
@@ -26,7 +26,6 @@ class EcsStack(Stack):
                 image=ecs.ContainerImage.from_ecr_repository(repository),
                 container_port=3000
             ),
-            listener_port=3000,
             memory_limit_mib=4096,
             public_load_balancer=True
             )
