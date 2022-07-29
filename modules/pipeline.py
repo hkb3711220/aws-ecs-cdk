@@ -16,7 +16,7 @@ class PipelineStack(Stack):
             pipeline_name="{}-cd-pipeline".format(common_name),
             synth=pipelines.ShellStep("Synth", 
                 input=pipelines.CodePipelineSource.git_hub(
-                    "h3711220/aws_ecs_cdk", "main", trigger=codepipeline_actions.GitHubTrigger("POLL")),
+                    "h3711220/aws_ecs_cdk", "main", trigger=codepipeline_actions.GitHubTrigger.POLL),
                 commands=[
                     "npm install -g aws-cdk", 
                     "python -m pip install -r requirements.txt", 
