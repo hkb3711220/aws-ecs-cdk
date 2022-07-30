@@ -23,7 +23,7 @@ class EcsStack(Stack):
             cpu=1024,
             desired_count=1,
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-                image=ecs.ContainerImage.from_ecr_repository(repository),
+                image=ecs.ContainerImage.from_ecr_repository(repository, tag="latest"),
                 container_port=3000
             ),
             memory_limit_mib=4096,
